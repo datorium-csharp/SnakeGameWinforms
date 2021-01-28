@@ -13,6 +13,7 @@ namespace SnakeGameWinforms
     public partial class Game : Form
     {
         GameZone gameZone = null;
+        Snake snake = null;
         
         public Game()
         {
@@ -30,7 +31,8 @@ namespace SnakeGameWinforms
             this.Controls.Add(gameZone);
 
             //adding snake to the game
-
+            snake = new Snake(this);
+            snake.Render();
 
             //adding food to the game
 
