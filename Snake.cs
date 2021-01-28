@@ -10,6 +10,10 @@ namespace SnakeGameWinforms
 {
     class Snake
     {
+        private int step = 20;
+        private int horVelocity = 0;
+        private int verVelocity = 0;
+
         private Game game = null;
         private List<PictureBox> pixels = new List<PictureBox>();
 
