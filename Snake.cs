@@ -10,6 +10,10 @@ namespace SnakeGameWinforms
 {
     class Snake
     {
+        public int Step { get; } = 20;
+        public int HorVelocity { get; set; } = 0;
+        public int VerVelocity { get; set; } = 0;
+
         public List<PictureBox> body = new List<PictureBox>();
         public Snake()
         {
@@ -27,5 +31,6 @@ namespace SnakeGameWinforms
 
             body.Add(pixel);
         }
+
     }
 }
