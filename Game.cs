@@ -23,6 +23,9 @@ namespace SnakeGameWinforms
 
         private void InitializeGame()
         {
+            //adding event handlers
+            this.KeyDown += Game_KeyDown;
+
             //adding game zone to the game
             gameZone = new GameZone { 
                 Left = 40,
@@ -36,6 +39,30 @@ namespace SnakeGameWinforms
 
             //adding food to the game
 
+        }
+
+        private void Game_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Left)
+            {
+                snake.MoveLeft();
+            }
+            else if(e.KeyCode == Keys.Right)
+            {
+                snake.MoveRight();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                snake.MoveUp();
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+                snake.MoveDown();
+            }
+            else if (e.KeyCode == Keys.Q)
+            {
+                snake.Grow();
+            }
         }
 
 
