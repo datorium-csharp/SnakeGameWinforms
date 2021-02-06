@@ -90,7 +90,13 @@ namespace SnakeGameWinforms
 
         public void Move()
         {
+            for(int i = body.Count - 1; i > 0; i--)
+            {
+                body[i].Location = body[i - 1].Location;
+            }
 
+            body[0].Left += this.HorVelocity * this.Step;
+            body[0].Top += this.VerVelocity * this.Step;
         }
 
     }

@@ -46,8 +46,7 @@ namespace SnakeGameWinforms
 
         private void MainTimer_Tick(object sender, EventArgs e)
         {
-            snake.body[0].Left += snake.HorVelocity * snake.Step;
-            snake.body[0].Top += snake.VerVelocity * snake.Step;            
+            snake.Move();            
         }
 
         private void Game_KeyDown(object sender, KeyEventArgs e)
@@ -74,6 +73,16 @@ namespace SnakeGameWinforms
                     break;
             }
         }
+
+//Homework:
+//- InitialiseSnake() adds 3 pixels, instead of just one head.
+//- Add scoring(with scoring label in the game window)
+//- Add food spawning logic, so that food is generated on the grid, but **not on the snake body**! 
+//- Every 5 collisions, the speed of snake increases
+//- Border collision check and logic
+//- Add count-up timer to your game
+//- Block it from moving in the opposite direction(optional)
+//- add enemies :)
 
     }
 }
