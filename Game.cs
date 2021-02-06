@@ -31,7 +31,7 @@ namespace SnakeGameWinforms
             gameZone = new GameZone();
             this.Controls.Add(gameZone);
 
-            snake = new Snake();
+            snake = new Snake(this);
             this.Controls.Add(snake.body[0]);
             snake.body[0].BringToFront();
         }
@@ -52,30 +52,26 @@ namespace SnakeGameWinforms
 
         private void Game_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Left)
-            {                
-                snake.HorVelocity = -1;
-                snake.VerVelocity = 0;
-            }
-            else if(e.KeyCode == Keys.Right)
+            switch (e.KeyCode)
             {
-                snake.HorVelocity = 1;
-                snake.VerVelocity = 0;
-            }
-            else if (e.KeyCode == Keys.Up)
-            {
-                snake.HorVelocity = 0;
-                snake.VerVelocity = -1;
-            }
-            else if (e.KeyCode == Keys.Down)
-            {
-                snake.HorVelocity = 0;
-                snake.VerVelocity = 1;
-            }
-            else if (e.KeyCode == Keys.P)
-            {
-                snake.HorVelocity = 0;
-                snake.VerVelocity = 0;
+                case Keys.Left:
+                    snake.Turn(9);
+                    break;
+                case Keys.Right:
+                    snake.Turn(3);
+                    break;
+                case Keys.Down:
+                    snake.Turn(6);
+                    break;
+                case Keys.Up:
+                    snake.Turn(12);
+                    break;
+                case Keys.P:
+                    snake.Stop();
+                    break;
+                case Keys.Q:
+                    snake.Grow();
+                    break;
             }
         }
 
