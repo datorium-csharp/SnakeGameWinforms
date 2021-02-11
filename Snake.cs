@@ -14,17 +14,16 @@ namespace SnakeGameWinforms
         private int horVelocity = 0;
         private int verVelocity = 0;
 
-        private Timer timerMove = null; //creating empty timer variable
+         //creating empty timer variable
 
         private Game game = null;
-        private List<PictureBox> pixels = new List<PictureBox>();
+        public List<PictureBox> pixels = new List<PictureBox>();
 
         public Snake(Game gameref)
         {
             game = gameref;
 
-            InitializeSnake();
-            InitializeTimerMove();            
+            InitializeSnake();                       
         }
 
         private void InitializeSnake()
@@ -46,26 +45,15 @@ namespace SnakeGameWinforms
             pixels[0].BringToFront();
         }
 
-        private void InitializeTimerMove()
+        public void Move()
         {
-            timerMove = new Timer();
-            timerMove.Tick += TimerMove_Tick;
-            timerMove.Interval = 400;
-            timerMove.Start();
-        }
+            for(int i = pixels.Count - 1; i > 0; i--)
+            {
+                pixels[i].Location = pixels[i - 1].Location;
+            }
 
-        private void TimerMove_Tick(object sender, EventArgs e)
-        {
-            this.Move();
-        }
-
-        private void Move()
-        {
             pixels[0].Left += horVelocity * step;
             pixels[0].Top += verVelocity * step;
-
-            //make your own code
-            //use for loop
         }
         
         public void MoveLeft()

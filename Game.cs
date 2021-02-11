@@ -14,11 +14,15 @@ namespace SnakeGameWinforms
     {
         GameZone gameZone = null;
         Snake snake = null;
-        
+        Food food = null;
+
+        private Timer timerMove = null;
+
         public Game()
         {
             InitializeComponent();
             InitializeGame();
+            InitializeTimerMove();
         }
 
         private void InitializeGame()
@@ -38,7 +42,8 @@ namespace SnakeGameWinforms
             snake.Render();
 
             //adding food to the game
-
+            food = new Food(this);
+            food.Render();            
         }
 
         private void Game_KeyDown(object sender, KeyEventArgs e)
@@ -65,6 +70,28 @@ namespace SnakeGameWinforms
             }
         }
 
+        private void SnakeFoodCollision()
+        {
+            if (snake.pixels[0].Bounds.IntersectsWith(food.Bounds))
+            {
+                //collision detected
+                MessageBox.Show("Collision detected");
+            }
+        }
 
+        private void InitializeTimerMove()
+        {
+            timerMove = new Timer();
+            timerMove.Tick += TimerMove_Tick;
+            timerMove.Interval = 400;
+            timerMove.Start();
+        }
+
+
+        private void TimerMove_Tick(object sender, EventArgs e)
+        {
+            snake.Move();
+            SnakeFoodCollision();
+        }
     }
 }
