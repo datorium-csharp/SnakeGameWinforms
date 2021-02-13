@@ -27,7 +27,7 @@ namespace SnakeGameWinforms
         private void InitializeSnake()
         {
             PictureBox pixel = new PictureBox();
-            pixel.BackColor = Color.Red;
+            pixel.BackColor = Color.Orange;
             pixel.Width = 20;
             pixel.Height = 20;
             pixel.Left = 200;
@@ -77,7 +77,7 @@ namespace SnakeGameWinforms
         public void Grow()
         {
             PictureBox pixel = new PictureBox();
-            pixel.BackColor = Color.Red;
+            pixel.BackColor = Color.Orange;
             pixel.Width = 20;
             pixel.Height = 20;
             pixel.Location = body[0].Location;
